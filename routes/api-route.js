@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
 })
 // Get one workout
 router.get('/:id', (req, res) => {
-    req.params.id
+    res.send(req.params.id)
 })
 // Create one workout
 router.post('/', (req, res) => {
