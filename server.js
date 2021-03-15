@@ -18,8 +18,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/tracker", {
     useFindAndModify: false
 });
 
-// routes
+const db = mongoose.connection
+db.on('error', (error) => console.log(error));
+db.once('open', () => console.log('Connected to Database'));
 
+// routes
+const apiRouter = require('./routes/api-route');
+app.use('/workouts', apiRouter);
 
 // app listening
 app.listen(PORT, () => {
