@@ -1,10 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const Workout = require('../models/workout')
+const Tracker = require('../models/tracker');
 
 // Get all workouts
-router.get('/', (req, res) => {
-    res.send('hello world')
+router.get('/api/workouts', async (req, res) => {
+    try {
+        const workouts = await Workout.find()
+        res.json(workouts)
+    } catch (err){ 
+        res.status(500).json({ message: err.message})
+    }
 })
 // Get one workout
 router.get('/:id', (req, res) => {
