@@ -11,7 +11,7 @@ router.get('/api/workouts', (req, res) => {
        res.json(err);
    });
 });
-// Get one workout
+//Create one workout
 router.post('/api/workouts', (req, res) => {
     db.create({})
     .then(data => 
@@ -21,12 +21,16 @@ router.post('/api/workouts', (req, res) => {
         res.json(err)
     });
 });
-// Update workout
-router.patch('/api/workouts/:id', (req, res) => {
+
+router.post('/api/workouts/:id', (req, res) => {
+    
+})
+// 
+router.get('/api/workouts/range', (req, res) => {
 
 })
-// Delete workout?
-router.delete('/:id', (req, res) => {
+// 
+router.post('/api/workouts/range', (req, res) => {
     
 })
 
