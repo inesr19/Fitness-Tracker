@@ -1,29 +1,31 @@
-const express = require('express');
-const router = express.Router();
-const Tracker = require('../models/tracker');
+const router = require('express').Router();
+const db = require('../models/tracker');
 
 // Get all workouts
-router.get('/api/workouts', async (req, res) => {
-    try {
-        const workouts = await Workout.find()
-        res.json(workouts)
-    } catch (err){ 
-        res.status(500).json({ message: err.message})
-    }
-})
+router.get('/api/workouts', (req, res) => {
+   db.find({})
+   .then(data => {
+       res.json(data)
+   }) 
+   .catch(err => {
+       res.json(err);
+   });
+});
 // Get one workout
-router.get('/:id', (req, res) => {
-    res.send(req.params.id)
-})
-// Create one workout
-router.post('/', (req, res) => {
-    
-})
+router.post('/api/workouts', (req, res) => {
+    db.create({})
+    .then(data => 
+        res.json(data)
+    )
+    .catch(err => {
+        res.json(err)
+    });
+});
 // Update workout
-router.patch('/:id', (req, res) => {
+router.patch('/api/workouts/:id', (req, res) => {
 
 })
-// Delete workout
+// Delete workout?
 router.delete('/:id', (req, res) => {
     
 })
