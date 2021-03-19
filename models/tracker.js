@@ -22,16 +22,20 @@ const trackerSchema = new Schema ({
         required: 'Enter the duration of the exercise (mins).'
     },
     weight: {
-        type: Number
+        type: Number,
+        trim: true
     },
     reps: {
-        type: Number
+        type: Number,
+        trim: true
     },
     sets: {
-        type: Number
+        type: Number,
+        trim: true
     },
     distance: {
-        type: Number
+        type: Number,
+        trim: true
     }
     }]
 });
