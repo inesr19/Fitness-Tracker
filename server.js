@@ -23,8 +23,7 @@ db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Connected to Database'));
 
 // routes
-const apiRouter = require('./routes/api-route');
-app.use('/workouts', apiRouter);
+require('./routes/api-route')(app);
 
 
 require('./routes/html-route')(app);

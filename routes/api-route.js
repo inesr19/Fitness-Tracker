@@ -1,8 +1,8 @@
-const router = require('express').Router();
 const db = require('../models/tracker');
 
+module.exports = function(app) {
 // Get all workouts
-router.get('/api/workouts', (req, res) => {
+app.get('/api/workouts', (req, res) => {
    db.find({})
    .then(data => {
        res.json(data)
@@ -12,26 +12,28 @@ router.get('/api/workouts', (req, res) => {
    });
 });
 //Create one workout
-router.post('/api/workouts', (req, res) => {
-    db.create({})
-    .then(data => 
-        res.json(data)
-    )
-    .catch(err => {
-        res.json(err)
-    });
+app.post('/api/workouts', (req, res) => {
+   
+     db.create(req.body)
+     .then(data => 
+         res.json(data)
+     )
+     .catch(err => {
+         res.json(err)
+     });
 });
 
-router.post('/api/workouts/:id', (req, res) => {
-    
+app.put('/api/workouts/:id', (params, res) => {
+    db.updateOne()
 })
 // 
-router.get('/api/workouts/range', (req, res) => {
-
+app.get('/api/workouts/range', (req, res) => {
+    db.find({})
+    .then(data => {
+        res.json(data)
+    })
+    .catch(err => {
+        res.json(err);
+    })
 })
-// 
-router.post('/api/workouts/range', (req, res) => {
-    
-})
-
-module.exports = router
+}
