@@ -8,7 +8,7 @@ app.get('/api/workouts', (req, res) => {
        res.json(data)
    }) 
    .catch(err => {
-       res.json(err);
+       res.json(err)
    });
 });
 //Create workout
@@ -31,8 +31,8 @@ app.put('/api/workouts/:id', (req, res) => {
     )
     .then(data => {
         res.json(data);
-    })
-})
+    });
+});
 // Workout dashboard (stats)
 app.get('/api/workouts/range', (req, res) => {
     db.find({})
@@ -41,8 +41,8 @@ app.get('/api/workouts/range', (req, res) => {
     })
     .catch(err => {
         res.json(err);
-    })
-})
+    });
+});
 app.post('/api/workouts/range', (req, res) => {
     db.create({})
     .then(data => {
@@ -50,6 +50,6 @@ app.post('/api/workouts/range', (req, res) => {
     })
     .catch(err => {
         res.json(err);
-    })
-})
- }
+    });
+});
+ };
