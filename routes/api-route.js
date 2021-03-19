@@ -23,12 +23,28 @@ app.post('/api/workouts', (req, res) => {
      });
 });
 
-app.put('/api/workouts/:id', (params, res) => {
-    db.updateOne()
+app.put('/api/workouts/:id', (req, res) => {
+    db.findOneAndUpdate(
+        {_id: req.params.id},
+        {$push: { exercises: req.body}},
+        {new: true}
+    )
+    .then(data => {
+        res.json(data);
+    })
 })
 // 
 app.get('/api/workouts/range', (req, res) => {
     db.find({})
+    .then(data => {
+        res.json(data)
+    })
+    .catch(err => {
+        res.json(err);
+    })
+})
+app.post('/api/workouts/range', (req, res) => {
+    db.create({})
     .then(data => {
         res.json(data)
     })
