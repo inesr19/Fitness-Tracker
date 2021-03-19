@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 3000
 
 const app = express();
 
+// morgan
 app.use(logger('dev'));
 
 app.use(express.urlencoded({extended: true}));
@@ -20,14 +21,13 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/fitness-tracker
     useFindAndModify: false
 });
 
+// Check if database is the problem
 const db = mongoose.connection
 db.on('error', (error) => console.log(error));
 db.once('open', () => console.log('Connected to Database'));
 
 // routes
 require('./routes/api-route')(app);
-
-
 require('./routes/html-route')(app);
 
 // app listening
